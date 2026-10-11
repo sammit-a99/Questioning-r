@@ -1,4 +1,7 @@
 .env
+*.csv
+random/
+
 
 __pycache__/
 *.pyc

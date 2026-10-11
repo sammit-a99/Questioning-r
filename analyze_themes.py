@@ -25,7 +25,7 @@ def plot_clusters(embeddings, labels, out_file=None, method="pca", random_state=
     if method == "pca":
         reducer = PCA(n_components=2, random_state=random_state)
         reduced = reducer.fit_transform(embeddings)
-    else:
+    else:   
         reducer = TSNE(n_components=2, random_state=random_state, init="pca", learning_rate="auto")
         reduced = reducer.fit_transform(embeddings)
 

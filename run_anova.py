@@ -19,6 +19,17 @@ def perform_anova(csv_file_path):
     print("       ONE-WAY ANOVA TEST RESULTS                 ")
     print("==================================================\n")
     
+    # Display descriptive statistics (mean and std) by demographic
+    print("--- DESCRIPTIVE STATISTICS (Mean ± Std) ---")
+    for metric in metrics:
+        print(f"\n{metric}:")
+        summary = df.groupby("Demographic")[metric].agg(['mean', 'std'])
+        for demo in summary.index:
+            mean_val = summary.loc[demo, 'mean']
+            std_val = summary.loc[demo, 'std']
+            print(f"  {demo}: {mean_val:.4f} ± {std_val:.4f}")
+    print("\n" + "="*50 + "\n")
+    
     for metric in metrics:
         print(f"Analyzing Metric: {metric}")
         print("-" * 40)
@@ -49,4 +60,4 @@ def perform_anova(csv_file_path):
         print("\n" + "="*50 + "\n")
 
 if __name__ == "__main__":
-    perform_anova("demographic_bias_results.csv")
+    perform_anova("demographic_bias_admission_resultslarge.csv")
